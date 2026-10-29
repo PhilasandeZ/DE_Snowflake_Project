@@ -1,57 +1,65 @@
-🚀 Snowflake Data Engineering Project
-📌 Project Overview
-This project demonstrates the implementation of a modern Data Engineering solution using Snowflake and SQL. The objective was to ingest raw business data, apply transformations, and create analytical datasets using the Medallion Architecture (Bronze, Silver, and Gold layers).
+Snowflake Data Engineering Project
+A hands-on Data Engineering project built in Snowflake using the Medallion Architecture (Bronze, Silver, Gold). This project demonstrates data ingestion, transformation, validation, and business analytics using SQL and Snowflake.
 
-The project simulates a retail sales environment containing customer, product, and order data, which is transformed into business-ready insights for reporting and decision-making.
+📖 Project Overview
+The project uses customer, order, and product datasets to simulate a retail sales environment. Data is loaded into Snowflake, processed through multiple layers, and transformed into business-ready insights.
 
+Objectives
+Import raw CSV files into Snowflake
+Perform data validation and cleansing
+Implement Bronze, Silver, and Gold layers
+Create analytical SQL queries
+Generate business insights from transactional data
 🏗️ Architecture
-Bronze Layer
-Raw data ingested from CSV files into Snowflake tables.
-
-Silver Layer
-Data cleaning, validation, and standardization.
-
-Gold Layer
-Business-focused analytical queries and reporting tables.
-
 CSV Files
-    ↓
+│
+├── customers.csv
+├── orders.csv
+└── products.csv
+        │
+        ▼
 Bronze Layer
-    ↓
+(Raw Data Storage)
+        │
+        ▼
 Silver Layer
-    ↓
+(Data Cleaning & Validation)
+        │
+        ▼
 Gold Layer
-    ↓
-Business Insights & Reporting
+(Business Reporting & Analytics)
 📂 Datasets
 Customers
-Contains customer information including:
+Stores customer information.
 
+Field
 Customer ID
 Customer Name
-Email Address
+Email
 Province
 Signup Date
-Total Records: 50
+✅ 50 Records
 
 Orders
-Contains transactional sales information including:
+Stores sales transactions.
 
+Field
 Order ID
 Customer ID
 Product ID
 Quantity
 Order Date
-Total Records: 150
+✅ 150 Records
 
 Products
-Contains product catalog information including:
+Stores product catalogue information.
 
+Field
 Product ID
 Product Name
 Category
 Unit Price
-Total Records: Product inventory dataset used for sales analysis.
+✅ Product inventory dataset used for sales analysis.
 
 🛠️ Technologies Used
 Snowflake
@@ -59,40 +67,42 @@ SQL
 Git
 GitHub
 Visual Studio Code
-CSV Data Sources
-📈 Data Engineering Skills Demonstrated
+CSV Files
+🔧 Data Engineering Tasks
 Data Ingestion
-Loading CSV files into Snowflake
-Managing structured datasets
-Data validation after ingestion
+Loaded CSV files into Snowflake tables
+Validated record counts
+Verified successful imports
 Data Transformation
-Cleaning incomplete records
-Data standardization
-Data quality checks
-SQL Development
+Cleaned and standardized datasets
+Removed invalid records
+Applied quality checks
+Analytics Development
+Created business reporting queries
+Performed revenue calculations
+Analyzed customer and product performance
+📊 SQL Skills Demonstrated
 SELECT Statements
-Filtering and Sorting
+Joins
 Aggregate Functions
 GROUP BY
 ORDER BY
-Joins
-Calculated Columns
-Business Metrics
-🔍 Analytical Queries
+Calculated Fields
+Revenue Analysis
+Customer Analytics
+Data Validation
+Business Reporting
+📈 Key Business Queries
 Record Validation
-Validated successful data loading into Snowflake:
-
-SELECT COUNT(*) AS total_rows
+SELECT COUNT(*) AS TOTAL_ROWS
 FROM CUSTOMERS_TAB*E;
 Result: 50 Customers
 
-SELECT COUNT(*) AS total_rows
+SELECT COUNT(*) AS TOTAL_ROWS
 FROM ORDERS_TABLE;
 Result: 150 Orders
 
 Revenue Analysis
-Calculated revenue generated per transaction:
-
 SELECT
     c.CUSTOMER_NAME,
     p.PRODUCT_NAME,
@@ -105,9 +115,7 @@ JOIN CUSTOMERS_TABLE c
     ON o.CUSTOMER_ID = c.CUSTOMER_ID
 JOIN PRODUCTS_TABLE p
     ON o.PRODUCT_ID = p.PRODUCT_ID;
-Top Customers by Revenue
-Identified the highest-spending customers:
-
+Top 5 Customers by Revenue
 SELECT
     c.CUSTOMER_NAME,
     SUM(o.QUANTITY * p.UNIT_PRICE) AS TOTAL_SPEND
@@ -120,8 +128,6 @@ GROUP BY c.CUSTOMER_NAME
 ORDER BY TOTAL_SPEND DESC
 LIMIT 5;
 Revenue by Product Category
-Analyzed revenue contribution by product category:
-
 SELECT
     p.CATEGORY,
     SUM(o.QUANTITY * p.UNIT_PRICE) AS TOTAL_REVENUE
@@ -129,29 +135,24 @@ FROM ORDERS_TABLE o
 JOIN PRODUCTS_TABLE p
     ON o.PRODUCT_ID = p.PRODUCT_ID
 GROUP BY p.CATEGORY;
-Product Performance Analysis
-Measured product sales performance using revenue and order quantities.
+🎯 Project Outcomes
+This project demonstrates the ability to:
 
-🎯 Key Learning Outcomes
-Through this project, I gained practical experience in:
+✅ Design a Snowflake Data Warehouse
 
-Building Snowflake databases and schemas
-Working with real-world datasets
-Implementing Medallion Architecture
-Data cleansing and validation
-Writing analytical SQL queries
-Performing multi-table joins
-Creating business-ready datasets
-Developing reporting solutions
-💡 Business Value
-The Gold Layer enables stakeholders to:
+✅ Implement Medallion Architecture
 
-Identify top-performing customers
-Analyze product sales trends
-Monitor category performance
-Measure business revenue
-Support data-driven decision-making
-📚 Repository Contents
+✅ Perform Data Cleaning and Validation
+
+✅ Build SQL-Based Analytics
+
+✅ Create Business Reporting Solutions
+
+✅ Transform Raw Data into Actionable Insights
+
+📁 Repository Structure
+Snowflake-Data-Engineering-Project
+│
 ├── customers.csv
 ├── orders.csv
 ├── products.csv
@@ -160,14 +161,12 @@ Support data-driven decision-making
 👨‍💻 Author
 Phila Zungu
 
-Aspiring Data Engineer focused on Snowflake, SQL, Data Warehousing, ETL/ELT Development, and Cloud Data Platforms.
+Aspiring Data Engineer with practical experience in:
 
-Core Skills
 Snowflake
 SQL
-Data Engineering
-ETL/ELT Pipelines
 Data Warehousing
-Git & GitHub
+ETL/ELT Pipelines
 Analytics & Reporting
-Medallion Architecture
+Git & GitHub
+Cloud Data Platforms
